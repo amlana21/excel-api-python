@@ -1,0 +1,9 @@
+12-11-19-11-33-52::getschema::INFO::Starting schema process..
+12-11-19-11-33-52::getschema::INFO::Start reading the input data file..
+12-11-19-11-33-52::getschema::INFO::End reading the input data file..
+12-11-19-11-33-52::getschema::INFO::Start cycling through the sheets..
+12-11-19-11-33-52::getschema::INFO::End cycling through the sheets and storing file info..
+12-11-19-11-33-52::getschema::INFO::End schema process..
+12-11-19-11-33-52::getschema::INFO::Start generating API response..
+12-11-19-11-33-52::getschema::INFO::End generating API response..
+12-11-19-11-33-52::getschema::INFO::Sending response and completing schema process..

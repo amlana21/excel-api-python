@@ -1,0 +1,13 @@
+{
+    "name": "apiserver",
+    "description": "role to prepare the api server",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "default_attributes": {
+    },
+    "override_attributes": {
+    },
+    "run_list": [
+        "recipe[git::default]","recipe[apiserver::apiserverinstall]","recipe[docker_compose::default]"
+    ]
+}

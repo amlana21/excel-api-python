@@ -1,0 +1,5 @@
+excelapienv/*
+.vscode
+.idea/*
+datafile/~$input_data.xlsx
+__pycache__/*

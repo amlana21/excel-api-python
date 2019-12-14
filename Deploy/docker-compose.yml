@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  flaskapp:
+    image: awsacdev/custom-flaskapp:1.0
+    ports:
+      - '5000:5000'
+    volumes:
+      - '/home/ubuntu/flaskapp1:/home/flaskapp'
+    deploy:
+      mode: replicated
+      replicas: 6
