@@ -71,4 +71,40 @@ Single Row:
 These endpoints can be invoked using CURL or from applications like Postman, and passing required parameters. 
 
 ## Infrastructure  
-The infrastructure for the Flask app is housed in AWS. I am using a cloudformation template to launch different components of the architecture like VPC, Subnets etc. 
+The infrastructure for the Flask app is housed in AWS. I am using a cloudformation template to launch different components of the architecture like VPC, Subnets etc. Below is an overview of the architecture which is built using the Cloudformation template:  
+
+![Archi](archi.png)  
+
+The Cloudformation template can be found in the Deploy folder of the code base. The temaplte can be used to launch a Cloudformation stack from the AWS console.The stack will contain the EC2 instances which will be used to initiate the Docker swarm.  
+
+## Configuration Management  
+Once the instances are launched, required packages and modules need to be installed on the instances so the app can be deployed. We will need the below packages/modules for our app deployment:  
+ - Docker  
+ - Docker Compose  
+ - GIT  
+
+This is achieved using a CHEF cookbook consisting of the recipes needed for the installations.The CHEF repo can be found in the Deploy folder of the code base.To execute the CHEF recipes, below are some pre-requisites:  
+ - A workstation with CHEF installed, to run the CHEF commands  
+ - A CHEF manage server. The free version of the hosted manage server should suffice for personal scenarios(https://manage.chef.io/) 
+ - The IP of the instances, to bootstrap using the CHEF recipes  
+
+Below are the commands to run on the workstation to bootstrap the instances and complete the installations.Before running any commands, follow below steps to ensure the local repo can connect to CHEF manage server:  
+ - Get the user key file and the knife file from manage server and copy it in a folder named .chef under excelapi_installs folder  
+ - Run the following command to test the connection:  
+ ```
+ knife ssl check
+ ```
+Run the following commands after navigating to the folder excelapi_installs
+```
+knife role from file roles/apiserver.json
+```
+
+Run the following commands after navigating to the folder excelapi_installs-->cookbooks-->apiserver
+<strong>Upload the cookbook to manage server:  </strong>
+```
+berks install
+berks upload
+```
+<strong>Bootstrap the Instance:  </strong>
+```
+knife bootstrap instance_ip_or_domain --ssh-user username --sudo --identity-file keyfilepath --node-name apiserver --run-list 'role[apiserver]'
