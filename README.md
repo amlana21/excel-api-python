@@ -141,7 +141,7 @@ docker stack deploy -c docker-compose.yml excelapiapp
 ```
 This starts the Flask app and the stack deploys the service with a replication of 6 across the 2 nodes.  
 
-The app can be access from the browser with the below URL. Once the URL loads, if the text 'working' shows up on the browser, the app is successfully deployed and working.
+The app can be accessed from the browser with the below URL. Once the URL loads, if the text 'working' shows up on the browser, the app is successfully deployed and working.
 ```http://<ip/domain_server>:5000/```  
 
 
