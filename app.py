@@ -15,7 +15,7 @@ schemaobj = Schema("input_data.xlsx")
 
 @app.route("/")
 def index():
-    return "testing"
+    return "working"
 
 
 @app.route("/initiate", methods=["GET"])
